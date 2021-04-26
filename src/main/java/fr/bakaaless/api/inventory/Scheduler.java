@@ -1,4 +1,4 @@
-package fr.bakaaless.inventory;
+package fr.bakaaless.api.inventory;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -83,13 +83,17 @@ public class Scheduler {
     synchronized void add(final InventoryAPI inv) {
         this.inventories.add(inv);
         if (this.inventories.size() == 1)
-            start();
+            this.start();
     }
 
     synchronized void remove(final InventoryAPI inv) {
         this.inventories.remove(inv);
         if (this.inventories.size() == 0)
-            stop();
+            this.stop();
+    }
+
+    synchronized int getStep() {
+        return this.step;
     }
 
 }
